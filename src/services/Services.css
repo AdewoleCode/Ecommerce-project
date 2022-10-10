@@ -1,0 +1,53 @@
+.services-section {
+    background-color: #fff;
+    margin: 50px 0;
+}
+
+.services {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+
+}
+
+.service-item {
+    display: flex;
+    gap: 0.5%;
+    border: 1px solid red;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.service-item h3 {
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.service-item p {
+    font-size: 14px;
+
+}
+.one {
+    background-color: var(--card-bg-01);
+}
+.two {
+    background-color: var(--card-bg-02);
+}
+.three {
+    background-color: var(--card-bg-03);
+}
+.four {
+    background-color: var(--card-bg-04);
+}
+
+.service-icon {
+    flex-basis: 25%;
+    font-size: 50px;
+}
+
+.service-text {
+    flex-basis: 75%;
+}
