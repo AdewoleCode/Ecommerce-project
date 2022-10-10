@@ -1,6 +1,6 @@
 .hero-section {
     background-color: var(--hero-bg);
-    padding: 40px 0;
+    padding: 60px 0;
 }
 
 
@@ -12,14 +12,14 @@
 }
 
 .hero-content {
-    flex-basis: 48%;
+    flex-basis: 49%;
     border: 1px solid red;
 
 }
 
 .hero-img {
     border: 1px solid red;
-    flex-basis: 50%;
+    flex-basis: 42%;
     /* just */
 }
 
@@ -52,5 +52,22 @@
 
 .buy__btn:hover {
     background-color: rgb(59, 59, 80);
+
+}
+
+
+/* products */
+
+.trending__products{
+    width: 80%;
+    margin: 0 auto;
+    padding: 60px 0;
+    border: 1px solid red;
+}
+
+.product__items{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 
 }
