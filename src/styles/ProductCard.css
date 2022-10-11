@@ -40,9 +40,17 @@ img{
     padding: 8px 10px;
     border-radius: 50px;
     cursor: pointer;
+    transition: all 0.25s;
+}
+
+.product__card-bottom .icon:hover {
+    transform: translateY(-10px);
 }
 
 
 .product__img:hover {
     transform: scale(0.90);
+}
+.product__name:hover {
+    color: inherit;
 }

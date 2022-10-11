@@ -1,16 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'
 
 import '../pages/Home.css'
 import heroImg from '../assets/images/hero-img.png'
 
+import products from '../assets/data/products'
+
 import Services from '../services/Services'
 import ProductList from '../components/layout/UI/ProductList'
 
+
+
+
+
 const Home = () => {
+  const [data, setData] = useState(products)
+
 
   const year = new Date().getFullYear()
+  useEffect(() => {
+    const filteredProducts = products.filter(item => item.category === 'chair')
+    setData(filteredProducts)
+  }, [])
+
+
+
   return (
     <>
       <section className='hero-section'>
@@ -34,7 +49,7 @@ const Home = () => {
       <section className="trending__products">
         <h2 className='section__title'>Trending Products</h2>
         <div className="product__items">
-          <ProductList />
+          <ProductList data={data} />
         </div>
 
       </section>
