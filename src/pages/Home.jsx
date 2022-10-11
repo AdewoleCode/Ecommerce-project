@@ -10,18 +10,29 @@ import products from '../assets/data/products'
 import Services from '../services/Services'
 import ProductList from '../components/layout/UI/ProductList'
 
+import counterImg from '../assets/images/counter-timer-img.png'
+
+import Clock from '../components/layout/UI/Clock'
+
 
 
 
 
 const Home = () => {
-  const [data, setData] = useState(products)
+  const [trendingProducts, setTrendingProducts] = useState([])
+  const [bestSalesProducts, setBestSalesProducts] = useState([])
+
 
 
   const year = new Date().getFullYear()
   useEffect(() => {
-    const filteredProducts = products.filter(item => item.category === 'chair')
-    setData(filteredProducts)
+    const filteredTrendingProducts = products.filter(item => item.category === 'chair')
+    const filteredBestSalesProducts = products.filter(item => item.category === 'sofa')
+
+
+
+    setTrendingProducts(filteredTrendingProducts)
+    setBestSalesProducts(filteredBestSalesProducts)
   }, [])
 
 
@@ -49,10 +60,38 @@ const Home = () => {
       <section className="trending__products">
         <h2 className='section__title'>Trending Products</h2>
         <div className="product__items">
-          <ProductList data={data} />
+          <ProductList data={trendingProducts} />
+        </div>
+      </section>
+
+      <section className="best__sales">
+        <h2 className='section__title'>Best Sales</h2>
+        <div className="best__items">
+          <ProductList className='best' data={bestSalesProducts} />
+        </div>
+      </section>
+
+
+      <section className="timer__countdown">
+        <div className="timer">
+          <div className="timer__text">
+            <div className="clock__top">
+              <h4>Limited Offfers</h4>
+              <h3>Quality Armchairs</h3>
+            </div>
+            <Clock />
+            <Link to='/shop' className="buy__btn white"> Visit Store</Link>
+          </div>
+          <div className="timer__image">
+            <img src={counterImg} alt="counter img" />
+          </div>
         </div>
 
       </section>
+
+
+
+
     </>
 
   )

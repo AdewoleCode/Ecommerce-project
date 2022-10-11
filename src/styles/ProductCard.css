@@ -1,9 +1,10 @@
 .product__card {
-    width: 22%;
+    /* width: 22%; */
+    width: 355px;
     border: 1px solid red;
     padding: 0 15px;
-    /* transition: all 0.5s;
-    cursor: pointer; */
+    flex-shrink: 0;
+
 }
 
 img{

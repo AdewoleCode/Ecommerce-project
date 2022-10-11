@@ -1,0 +1,17 @@
+.clock__data{
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 15px;
+
+}
+
+.clock__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    gap: 30px;
+    margin-top: 23px;
+    margin-bottom: 27px;
+}
