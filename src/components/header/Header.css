@@ -1,16 +1,20 @@
 .header-section {
     width: 80%;
     margin: 0 auto;
+    /* position: fixed;
+    top: 1px; */
 }
 
-.header{
+.header {
     width: 100%;
     height: 80px;
     line-height: 75px;
     border: 1px solid red;
+
+
 }
 
-.nav__wrapper{
+.nav__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,15 +51,15 @@
 .nav__icons {
     display: flex;
     align-items: center;
-    column-gap:20px ;
+    column-gap: 20px;
 }
 
-.nav__icons .cart__icons{
+.nav__icons .cart__icons {
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-.cart__icons{
+.cart__icons {
     position: relative;
 }
 
@@ -83,12 +87,12 @@
     cursor: pointer;
 }
 
-.mobile__menu{
+.mobile__menu {
     font-size: 1.5rem;
     color: var(--primary-color);
     display: none;
 }
 
-.nav__active{
+.nav__active {
     font-weight: 750 !important;
 }
