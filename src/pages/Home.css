@@ -92,6 +92,8 @@
     background-color: var(--primary-color);
     /* padding: 60px 0; */
     height: 300px;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -129,4 +131,19 @@
 .timer h3, h4 {
     color: #fff;
     margin: 10px 0;
+}
+
+/* new arrivals */
+.new__arrivals{
+    width: 80%;
+    margin: 0 auto;
+    padding: 60px 0;
+    border: 1px solid red;
+}
+
+.new__arrivals-item{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
 }

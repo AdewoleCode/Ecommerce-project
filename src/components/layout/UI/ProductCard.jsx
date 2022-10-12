@@ -13,7 +13,7 @@ const ProductCard = ({item}) => {
         <h3  className="product__name"><Link to={`/shop/${item.id}`}>{item.productName}</Link></h3>
         <span className="chair">{item.category}</span>
         <div className="product__card-bottom">
-            <span className="price">{item.price}</span>
+            <span className="price">${item.price}</span>
             <span className='icon'>
                 <HiOutlinePlus />
             </span>

@@ -21,6 +21,12 @@ import Clock from '../components/layout/UI/Clock'
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([])
   const [bestSalesProducts, setBestSalesProducts] = useState([])
+  const [mobileProducts, setMobileProducts] = useState([])
+  const [wirelessProducts, setWirelessProducts] = useState([])
+  const [watchProducts, setWatchProducts] = useState([])
+
+
+
 
 
 
@@ -28,11 +34,19 @@ const Home = () => {
   useEffect(() => {
     const filteredTrendingProducts = products.filter(item => item.category === 'chair')
     const filteredBestSalesProducts = products.filter(item => item.category === 'sofa')
+    const filteredMobileProducts = products.filter(item => item.category == 'mobile')
+    const filteredWirelessProducts = products.filter(item => item.category == 'wireless')
+    const filteredWatchProducts = products.filter(item => item.category == 'watch')
+
+
 
 
 
     setTrendingProducts(filteredTrendingProducts)
     setBestSalesProducts(filteredBestSalesProducts)
+    setMobileProducts(filteredMobileProducts)
+    setWirelessProducts(filteredWirelessProducts)
+    setWatchProducts(filteredWatchProducts)
   }, [])
 
 
@@ -87,6 +101,24 @@ const Home = () => {
           </div>
         </div>
 
+      </section>
+
+
+      <section className="new__arrivals">
+        <h2 className='section__title'>New Arrivals</h2>
+        <div className="new__arrivals-item">
+          <ProductList data={mobileProducts} />
+          <ProductList data={wirelessProducts} />
+        </div>
+      </section>
+
+
+
+      <section className="new__arrivals">
+        <h2 className='section__title'>Popular in Category</h2>
+        <div className="new__arrivals-item">
+          <ProductList data={watchProducts} />
+        </div>
       </section>
 
 
