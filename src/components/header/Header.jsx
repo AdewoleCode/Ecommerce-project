@@ -34,6 +34,7 @@ const Header = () => {
   return (
     <section className='header-section'>
       <header className='header'>
+        <div className="div">
         <div className='nav__wrapper'>
           <div className='logo'>
             <img src={Logo} alt='' />
@@ -73,6 +74,7 @@ const Header = () => {
               <HiMenu />
             </span>
           </div>
+        </div>
         </div>
       </header>
     </section>

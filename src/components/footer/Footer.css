@@ -33,14 +33,15 @@
 .footer__item p {
     display: flex;
     gap: 9px;
-    margin: 10px 0;
+    margin: 15px 0;
     transition: all 0.3s;
+    line-height: 1.5;
 }
 
 .footer__item p:hover {
     color: white;
     cursor: pointer;
-    transform: scale(0.95);
+    transform: scaleX(0.9);
 }
 
 .footer__item p .icon{
