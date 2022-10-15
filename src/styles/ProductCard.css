@@ -45,7 +45,9 @@ img{
 }
 
 .product__card-bottom .icon:hover {
-    transform: translateY(-10px);
+    /* transform: translateY(-10px); */
+    transform: scale(0.92);
+
 }
 
 

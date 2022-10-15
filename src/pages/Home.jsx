@@ -34,11 +34,9 @@ const Home = () => {
   useEffect(() => {
     const filteredTrendingProducts = products.filter(item => item.category === 'chair')
     const filteredBestSalesProducts = products.filter(item => item.category === 'sofa')
-    const filteredMobileProducts = products.filter(item => item.category == 'mobile')
-    const filteredWirelessProducts = products.filter(item => item.category == 'wireless')
-    const filteredWatchProducts = products.filter(item => item.category == 'watch')
-
-
+    const filteredMobileProducts = products.filter(item => item.category === 'mobile')
+    const filteredWirelessProducts = products.filter(item => item.category === 'wireless')
+    const filteredWatchProducts = products.filter(item => item.category === 'watch')
 
 
 
@@ -50,6 +48,9 @@ const Home = () => {
   }, [])
 
 
+
+
+  
 
   return (
     <>
