@@ -66,7 +66,7 @@ const Header = () => {
               <RiShoppingBagLine />
               <span className='badge'>1</span>
             </span>
-            <span><img src={userIcon} /></span>
+            <span><img src={userIcon} alt='icon' /></span>
           </div>
 
           <div className='mobile__menu'>

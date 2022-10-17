@@ -115,3 +115,25 @@
 .nav__active {
     font-weight: 750 !important;
 }
+
+@media screen and (max-width: 1025px){
+    .nav__wrapper {
+        width: 90%;
+        justify-content: space-between;    
+    
+    }
+
+}
+
+@media screen and (max-width: 800px){
+    .nav__wrapper {
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header {
+        width: 765px;
+    }
+}

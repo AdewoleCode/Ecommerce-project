@@ -69,6 +69,7 @@
     display: flex;
     justify-content: center;
     gap: 30px;
+    flex-wrap: wrap;
 
 }
 
@@ -146,4 +147,35 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
+}
+
+
+@media screen and (max-width: 1025px){
+
+    .hero {
+    width: 90%;
+    align-items: center;
+}
+
+.hero-img {
+    border: 1px solid red;
+    flex-basis: 45%;
+}
+
+.hero h2 {
+    font-size: 1.8rem;
+    margin: 15px 0px;
+}
+
+
+.hero p {
+    margin-bottom: 30px;
+
+}
+.hero-content {
+    flex-basis: 46%;
+    border: 1px solid red;
+
+}
+
 }
