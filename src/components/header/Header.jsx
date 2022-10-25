@@ -10,6 +10,9 @@ import { HiMenu } from 'react-icons/hi'
 import Logo from '../../assets/images/eco-logo.png'
 import userIcon from '../../assets/images/user-icon.png'
 
+import { useSelector } from 'react-redux'
+
+
 
 
 const nav__links = [
@@ -31,6 +34,11 @@ const nav__links = [
 
 
 const Header = () => {
+  const totalQuantity = useSelector(state => state.cart.totalQuantity)
+
+
+
+
   return (
     <section className='header-section'>
       <header className='header'>
@@ -46,15 +54,16 @@ const Header = () => {
 
           <div className='navigation'>
             <ul className='menu'>
-              {nav__links.map((nav, index) => (
+              {/* {nav__links.map((nav, index) => (
                 <li className='nav__item' key={index}><NavLink to={nav.path} className={(navClass) => navClass.isActive ? 'nav__active' : ''}>{nav.display}</NavLink></li>
-              ))}
+              ))} */}
 
-              {/* <li className='nav__item'><NavLink to='/home'>Home</NavLink></li>
+              <li className='nav__item'><NavLink to='/home'>Home</NavLink></li>
               <li className='nav__item'><NavLink to='/shop'>Shop</NavLink></li>
-              <li className='nav__item'><NavLink to='/cart'>Cart</NavLink></li> */}
+              <li className='nav__item'><NavLink to='/cart'>Cart</NavLink></li>
             </ul>
           </div>
+
 
 
           <div className='nav__icons'>
@@ -64,7 +73,7 @@ const Header = () => {
             </span>
             <span className='cart__icons'>
               <RiShoppingBagLine />
-              <span className='badge'>1</span>
+              <span className='badge'>{totalQuantity}</span>
             </span>
             <span><img src={userIcon} alt='icon' /></span>
           </div>

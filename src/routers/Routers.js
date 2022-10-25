@@ -15,6 +15,8 @@ import React from 'react'
 
 const Routers = () => {
   return (
+
+    <>
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/home' element={<Home />} />
@@ -25,6 +27,8 @@ const Routers = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />} />
     </Routes>
+    </>
+
   )
 }
 

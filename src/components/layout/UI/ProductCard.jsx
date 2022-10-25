@@ -4,7 +4,29 @@ import '../../../styles/ProductCard.css'
 import {HiOutlinePlus} from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 
+import { useDispatch } from 'react-redux' 
+import { cartActions } from '../../../redux/slices/CartSlice'
+
+import { toast } from 'react-toastify'
+
 const ProductCard = ({item}) => {
+
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(cartActions.addItemm({
+      id: item.id,
+      productName: item.productName,
+      price: item.price,
+      image: item.imgUrl,
+    }))
+
+    toast.success('product successfully added')
+    console.log(item)
+  }
+
+
+
   return (
     <div className='product__card'>
         <div className="product__img">
@@ -14,7 +36,7 @@ const ProductCard = ({item}) => {
         <span className="chair">{item.category}</span>
         <div className="product__card-bottom">
             <span className="price">${item.price}</span>
-            <span className='icon'>
+            <span className='icon' onClick={addToCart}>
                 <HiOutlinePlus />
             </span>
         </div>
