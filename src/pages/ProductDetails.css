@@ -1,0 +1,19 @@
+.product__detail {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    border: 1px solid red;
+    width: 80%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+
+.product__detail .image {
+    width: 45%;
+    border: 1px solid green;
+}
+
+.product__detail .item__details {
+    width: 45%;
+}

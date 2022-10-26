@@ -1,4 +1,18 @@
 .common__section {
-    background: linear-gradient(#000, #000), url('../assets/images/table.jpg') no-repeat center center;
+    margin-top: 70px;
+    /* background: linear-gradient(#000, #000), url('../assets/images/table.jpg') no-repeat center center; */
     background-size: contain;
+    background-color: rgb(0, 225, 255);
+}
+
+
+.common {
+    border: 1px solid white;
+    height: 150px;
+}
+
+.common{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
