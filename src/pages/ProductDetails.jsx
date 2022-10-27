@@ -3,37 +3,80 @@ import { useParams } from 'react-router-dom'
 import Products from '../assets/data/products'
 import CommonSection from '../components/layout/UI/CommonSection'
 
+import { useDispatch } from 'react-redux'
+import { cartActions } from '../redux/slices/CartSlice'
+
+import {toast} from 'react-toastify'
+
+import ProductList from '../components/layout/UI/ProductList'
+
 import './ProductDetails.css'
 
 const ProductDetails = () => {
 
-  const { id }= useParams()
+  const { id } = useParams()
 
   const products = Products.find(item => item.id === id)
 
-  const {productName, imgUrl, price, description} = products
+  const { productName, imgUrl, price, description, category } = products
+
+  const relatedProducts = Products.filter(item => item.category === category)
+
+  const dispatch = useDispatch()
+
+
+  const addToCart = () => {
+    dispatch(cartActions.addItemm({
+      id,
+      image: imgUrl,
+      productName,
+      price
+    }))
+
+    toast.success('Product added to cart')
+  }
 
 
 
   return (
     <>
 
-    <CommonSection title={productName} />
+      <CommonSection title={productName} />
 
-    <div className="product__detail">
-      <div className="image">
-        <img src={imgUrl} alt="" />
+      <div className="detail__wrapper">
+
+        <div className="product__detailss">
+          <div className="image">
+            <img src={imgUrl} alt="" />
+          </div>
+
+          <div className="item__detailss">
+            <h2>{productName}</h2>
+            <div className="priCat">
+              <h2 className='price-item'>${price}</h2>
+              <span className='cat'>Category: {category.toUpperCase()}</span>
+
+            </div>
+            <h3>{description}</h3>
+
+            <button className='' onClick={addToCart}> Add To Cart</button>
+
+          </div>
+
+        </div>
+
+
+        <div className="also__like">
+          <h2>You might also like</h2>
+          <div className="also__img">
+            <ProductList data={relatedProducts} />
+          </div>
+
+        </div>
+
       </div>
 
-      <div className="item__details">
-        <h3>{productName}</h3>
-        <h3>{price}</h3>
-        <h3>{description}</h3>
 
-      </div>
-
-    </div>
-    
     </>
   )
 }
