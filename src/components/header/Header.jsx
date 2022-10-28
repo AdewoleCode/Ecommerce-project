@@ -1,7 +1,7 @@
 import React from 'react'
 import '../header/Header.css'
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import { BsHeartHalf } from 'react-icons/bs'
 import { RiShoppingBagLine } from 'react-icons/ri'
@@ -33,8 +33,16 @@ const nav__links = [
 
 
 
+
 const Header = () => {
   const totalQuantity = useSelector(state => state.cart.totalQuantity)
+
+  const navigate = useNavigate()
+
+
+  const navigateToCart = () => {
+    navigate('/cart')
+  }
 
 
 
@@ -73,7 +81,7 @@ const Header = () => {
               </span>
               <span className='cart__icons'>
                 <RiShoppingBagLine />
-                <span className='badge'>{totalQuantity}</span>
+                <span className='badge' onClick={navigateToCart}>{totalQuantity}</span>
               </span>
               <span><img src={userIcon} alt='icon' /></span>
             </div>

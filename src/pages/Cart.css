@@ -2,4 +2,85 @@
     width: 80%;
     border: 1px solid red;
     margin: 0 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 50px 0;
+}
+
+.table {
+    width: 60%;
+    border: 1px solid red;
+    margin: 0 auto;
+}
+
+/* th, tbody{
+    width: 100%;
+} */
+.table tr,
+td img {
+    width: 100px !important;
+    height: 100px !important;
+    padding: 15px;
+    border: 1px solid blue;
+}
+
+
+
+.table th,
+td {
+    padding-left: 50px;
+    padding-right: 50px;
+    border: 1px solid blue;
+    text-align: center;
+}
+
+.table .table_title {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 70%;
+
+}
+
+.table .table__icon {
+    font-size: 23px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.table .table__icon:hover{
+    transform: scale(1.1);
+}
+.form {
+    width: 30%;
+    height: 300px;
+    border: 1px solid red;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.form__btn {
+    padding: 15px 5px;
+    margin: 20px 0px;
+}
+
+.form .total__amount {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form .total__amount span {
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.no__products {
+    padding: 100px 0;
+    margin: 0 auto;
 }
