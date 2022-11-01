@@ -8,12 +8,16 @@ import '../pages/SignUp.css'
 
 import '../pages/Login.css'
 
-// import { createUserWithEmailAndPassword } from 'firebase/auth'
-// import { auth } from '../Firebase-config'
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
+import { setDoc, doc } from 'firebase/firestore';
 
 import { auth } from '../Firebase-config'
+import { storage } from '../Firebase-config';
+import { db } from '../Firebase-config';
+
+import { toast } from 'react-toastify'
 
 
 
@@ -24,7 +28,14 @@ const SignUp = () => {
     setLoading(true)
 
     createUserWithEmailAndPassword(auth, email, password).then(userInfo => {
-      console.log(userInfo.user)
+      const userDetails = userInfo.user
+      const storageRef = ref(storage, `images/${Date.now() + username}`)
+      const uploadTask = uploadBytesResumable(storageRef, file)
+      console.log(userDetails)
+
+      
+    }).catch(error => {
+      toast.error('something went wrong')
     })
     // try {
     //   const userCredential = await createUserWithEmailAndPassword(auth, email, password)
