@@ -19,11 +19,22 @@ import { db } from '../Firebase-config';
 
 import { toast } from 'react-toastify'
 
+import { useNavigate } from 'react-router-dom'
+
 
 
 const SignUp = () => {
 
-  const registerUser = async(e) => {
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [file, setFile] = useState(null)
+  const [loading, setLoading] = useState(false)
+
+
+  const navigate = useNavigate()
+
+  const registerUser = async (e) => {
     e.preventDefault()
     setLoading(true)
 
@@ -31,10 +42,37 @@ const SignUp = () => {
       const userDetails = userInfo.user
       const storageRef = ref(storage, `images/${Date.now() + username}`)
       const uploadTask = uploadBytesResumable(storageRef, file)
+
+      uploadTask.on((error) => {
+        toast.error(error.message)
+      }, () => {
+        getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+
+          // update user profile
+          await updateProfile(userDetails, {
+            displayName: username,
+            photoURL: downloadURL,
+          })
+
+          // store user data in firestore database
+          await setDoc(doc(db, 'users', userDetails.uid), {
+            uid: userDetails.uid,
+            displayName: username,
+            email,
+            photoURL: downloadURL
+          })
+        })
+      })
+
+      setLoading(false)
+      toast.success('account successfully created')
+      navigate('/login')
       console.log(userDetails)
 
-      
+
     }).catch(error => {
+      setLoading(false)
+
       toast.error('something went wrong')
     })
     // try {
@@ -45,45 +83,49 @@ const SignUp = () => {
     //   console.log(user)
     //   console.log('helo')
 
-  
-      
+
+
     // } catch (error) {
-      
+
     // }
   }
 
 
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState ('')
-  const [password, setPassword] = useState ('')
-  const [file, setFile] = useState(null)
-  const [loading, setLoading] = useState(false)
 
   return (
     <div className="login">
-      <h3>Register</h3>
-      <form action=""  onSubmit={registerUser}>
-        <div className="name">
-          <input type="text" placeholder='Username...' value={username} onChange={e => setUsername(e.target.value)} />
-        </div>
-        <div className="name">
-          <input type="email" placeholder='email...' value={email} onChange={e => setEmail(e.target.value)} />
-        </div>
 
-        <div className="email">
-          <input type="password" placeholder='Enter Your Password...'  value={password} onChange={e => setPassword(e.target.value)}/>
-        </div>
-        
 
-        <div className="file">
-          <input type="file" onChange={e => setFile(e.target.files[0])}/>
-        </div>
-        
+      {
+        loading ? (<h2>LOADING....</h2>) : (
+          <section className='login_in'>
+            <h3>Register</h3>
+            <form action="" onSubmit={registerUser}>
+              <div className="name">
+                <input type="text" placeholder='Username...' value={username} onChange={e => setUsername(e.target.value)} />
+              </div>
+              <div className="name">
+                <input type="email" placeholder='email...' value={email} onChange={e => setEmail(e.target.value)} />
+              </div>
 
-        <button className='login__btn'>Sign Up</button>
+              <div className="email">
+                <input type="password" placeholder='Enter Your Password...' value={password} onChange={e => setPassword(e.target.value)} />
+              </div>
 
-        <h5>Already have an account?  <Link to='/login'><span >Click to login</span> </Link> </h5>
-      </form>
+
+              <div className="file">
+                <input type="file" onChange={e => setFile(e.target.files[0])} />
+              </div>
+
+
+              <button className='login__btn'>Sign Up</button>
+
+              <h5>Already have an account?  <Link to='/login'><span >Click to login</span> </Link> </h5>
+            </form>
+          </section>
+
+        )
+      }
     </div>
   )
 }

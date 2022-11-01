@@ -1,7 +1,7 @@
 import React from 'react'
 import '../header/Header.css'
 
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 import { BsHeartHalf } from 'react-icons/bs'
 import { RiShoppingBagLine } from 'react-icons/ri'
@@ -11,6 +11,12 @@ import Logo from '../../assets/images/eco-logo.png'
 import userIcon from '../../assets/images/user-icon.png'
 
 import { useSelector } from 'react-redux'
+import UseAuth from '../../custom-hooks/UseAuth'
+
+import { signOut } from 'firebase/auth'
+import  auth  from '../../Firebase-config'
+
+import { toast } from 'react-toastify'
 
 
 
@@ -35,9 +41,24 @@ const nav__links = [
 
 
 const Header = () => {
+
+  const logout = () => {
+    signOut(auth).then(()=> {
+      toast.success('logged out')
+      navigate('/home')
+    }).catch((error)=> {
+      toast.error(error.message)
+    })
+  }
+
+
+
+
   const totalQuantity = useSelector(state => state.cart.totalQuantity)
 
   const navigate = useNavigate()
+  
+  const currentUser = UseAuth()
 
 
   const navigateToCart = () => {
@@ -75,6 +96,13 @@ const Header = () => {
 
 
             <div className='nav__icons'>
+            <h3>{currentUser.displayName}</h3>
+            {
+              console.log(currentUser.displayName)
+              // console.log(currentUser.displayName)
+
+            }
+
               <span className='cart__icons'>
                 <BsHeartHalf />
                 <span className='badge'>1</span>
@@ -83,7 +111,11 @@ const Header = () => {
                 <RiShoppingBagLine />
                 <span className='badge' onClick={navigateToCart}>{totalQuantity}</span>
               </span>
-              <span><img src={userIcon} alt='icon' /></span>
+              <span><img src={currentUser ? currentUser.photoURL : userIcon} alt='icon' /></span>
+
+              {
+                currentUser ? <span onClick={logout}>Logout</span> : <div> <Link to='/signup' >Signup</Link> <Link to='/signin' >Login</Link></div>
+              }
             </div>
 
             <div className='mobile__menu'>

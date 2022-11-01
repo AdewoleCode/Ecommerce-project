@@ -14,7 +14,7 @@
 }
 
 .login form {
-    width: 40%;
+    width: 50%;
     padding: 50px 20px;
     border: 1px solid blue;
     margin: 0 auto;
@@ -72,4 +72,8 @@
 .login .file input[type='file']{
     color: white;
     cursor: pointer;
+}
+
+.login_in {
+    width: 70%;
 }

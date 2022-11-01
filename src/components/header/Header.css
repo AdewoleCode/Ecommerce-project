@@ -116,6 +116,11 @@
     font-weight: 750 !important;
 }
 
+.nav__icons h3 {
+    color: red;
+    font-size: 30px;
+}
+
 @media screen and (max-width: 1025px){
     .nav__wrapper {
         width: 90%;
